@@ -23,9 +23,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typißcally from a nib.
     
-    NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"crystal_ball" ofType:@"mp3"];
-    NSURL * soundURL = [NSURL fileURLWithPath:soundPath];
-    AudioServicesCreateSystemSoundID(CFBridgingRetain(soundURL), &soundEffect);
+    NSString *soundPath = [];
     
     self.crystalBall = [[CrystalBall alloc] init];
     
@@ -116,8 +114,7 @@
 - (void) makePrediction{
     [self.backgroundImageView startAnimating];
     self.predictionlLabel.text = [self.crystalBall randomPrediction];
-    AudioServicesPlaySystemSound(soundEffect);
-
+    
     [UIView animateWithDuration:6 animations:^{
         self.predictionlLabel.alpha = 1;
     }];
